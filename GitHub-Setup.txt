@@ -1,0 +1,33 @@
+Make ssh key pair. Give the public one to GitHub, save the private one in local ssh.
+(we did this in lab 1)
+
+For adding the key to local ssh (I have to do this every time I start the console):
+ - Open console in project folder
+ - run: eval "$(ssh-agent -s)"
+	- This starts the SSH angent
+ - run: ssh-add SSH
+	- This adds the provate ssh key to the local ssh.
+	- Need to replace SSH with the name of the file containing the provate key
+		- Need to also add the path to the file if it isn't in the same folder
+
+Setting up GitHub
+ - Have GitHub installed
+ - Have a console opened in the folder you intend to use for the project
+ - Have your ssh key added to the local ssh
+	- If you don't, you will get this message when pushing: git@github.com: Permission denied (publickey).
+		- If this happens, follow the instructions above.
+ - run: git init
+	- Sets up git in that folder
+ - run: git remote add origin git@github.com:FlyingTNT/EECS-348-Project.git
+	- Adds to the list of remote directories one called 'origin' that points to the project
+ - run: git remote -v
+	- Just prints the remotes. Origin should be there
+ - run: git checkout main
+	- Moves you to the main branch.
+	- This may not work. If it doesn't, try 'git checkout -M main' and then talk to me
+ - You should be good to add -> commit -> push
+	- Note that for your first push you will have to do 'git push -u origin main'
+	- For subsequent ones, you should be able to just do git push
+
+
+When committing, follow the message guidelines at: https://gist.github.com/robertpainsi/b632364184e70900af4ab688decf6f53
