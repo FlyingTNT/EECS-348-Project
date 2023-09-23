@@ -44,8 +44,8 @@ Project Plan
 
 Planner Sections :
 - Ashley- project overview
-- Jeff - Management Process (4.1-4.4)
-- Chris - Management Process  (4.5-4.8)
+- Jeff - Management Process (4.5-4.8)
+- Chris - Management Process  (4.1-4.4)
 - Vi - Project organization
 - Clare - Introduction
 
