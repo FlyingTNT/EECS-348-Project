@@ -1,0 +1,63 @@
+--------------------------------
+Meeting - 9/08			|
+--------------------------------
+Introductions
+
+Attendance - Everyone except Ashley (had to work, was filled in on the details later)
+
+Group:
+Elizabeth (Clare)
+Ashley
+Jeff
+Chris
+Vivian (Vi)
+Aryan
+
+Notes :
+- Talked about minor details of the project
+- Project : calculator program to be done in c++
+
+Upcoming due dates:
+    - project plan due Sunday, September 22nd
+
+--------------------------------
+Meeting - 9/15			|
+--------------------------------
+Assigning Roles
+
+Notes :
+- Lab went longer than expected so meeting didn't really happen
+- Jeff came up with roles for us to choose from and sent in text group
+
+Roles:
+- Leader : Jeff
+- GitHub Manager : Chris
+- Coder/Tester : Ashley, Aryan
+- Quality Control : Vi
+- Documentation : Clare
+
+Upcoming due dates:
+    - project plan due Sunday, September 22nd
+
+--------------------------------
+Meeting - 9/22			|
+--------------------------------
+Project Plan
+
+Planner Sections :
+- Ashley- project overview
+- Jeff - Management Process (4.1-4.4)
+- Chris - Management Process  (4.5-4.8)
+- Vi - Project organization
+- Clare - Introduction
+
+Notes :
+- Todays meeting was virtual
+- Project Plan due Sunday 22nd
+- Picked parts of Development Plan for each of us to do (sections and their authors listed above)
+- Everyone finish parts by Saturday evening/Sunday morning so it can be checked over
+- Upload changes to GitHub Repository
+    - Send Chris your user so they can add you to the repository
+
+Upcoming due dates:
+    - project plan due Sunday, September 22nd
