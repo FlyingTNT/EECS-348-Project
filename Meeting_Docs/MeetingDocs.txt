@@ -61,3 +61,31 @@ Notes :
 
 Upcoming due dates:
     - project plan due Sunday, September 22nd
+
+--------------------------------
+Meeting - 9/30			|
+--------------------------------
+Software Requirements
+
+Sections :
+Ashley- Classification (4)
+Jeff -  Overall Description (2.1)
+Chris - Specific Requirements (3)
+Vi - Appendices (5)
+Clare - Introduction (1)
+Aryan -  Overall Description (2.2-2.6)
+
+Notes : 
+- Today’s meeting was virtual
+- Software Requirements due October 14th
+- Picked parts of Software Requirements for each of us to do (sections and their authors listed above)
+- Have done by Saturday, 14th
+- When committing your document version put in own branch and Chris will merge when finished
+- Make sure to follow git guidelines with commit messages
+- Doing the quiz!
+
+
+
+Dates :
+- Requirements due 10/14
+- Everyone finish parts by Saturday evening so Jeff can have time to submit
