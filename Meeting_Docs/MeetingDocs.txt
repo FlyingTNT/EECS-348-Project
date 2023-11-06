@@ -84,8 +84,37 @@ Notes :
 - Make sure to follow git guidelines with commit messages
 - Doing the quiz!
 
-
-
 Dates :
 - Requirements due 10/14
 - Everyone finish parts by Saturday evening so Jeff can have time to submit
+
+--------------------------------
+Meeting - 11/5			|
+--------------------------------
+Software Architecture
+
+Notes :
+- Using terminal as of right now
+- Deciding how we want to store the data
+    - Tree with different levels for each operation
+    - Parsing into list
+        - Have to figure out how to incorporate pemdas
+        - Traverse list to look for highest priority operation and do that first
+            - Store equations in list
+            - Parentheses are an object containing a list
+            - For negation: check if +/- is preceded by another operator. If it is, it is 		unary, if not it is operator.
+    - Store as list of operator/number objects 
+- Deciding parts for document
+- Document is due Sunday but try to have it done Saturday night
+
+Sections :
+Ashley- Interface, Size and Performance (6,7)
+Jeff - Architectural Representation  (2)
+Chris - Logical View (5)
+Vi - Quality (8)
+Clare - Introduction (1)
+Aryan - Goals and Constraints  (3)
+
+Dates :
+- Requirements due 11/12
+- Everyone finish parts by Saturday evening so it can be looked over and Jeff can have time to submit
