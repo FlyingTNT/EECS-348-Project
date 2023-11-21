@@ -1,0 +1,26 @@
+Difficulty/Amount of time 1-5 (1 is easy)
+
+Create EquationElement class - 1
+Create NumericValue class - 2
+Create UnaryOperator class + subclasses - 2
+Create BinaryOperator class + subclasses - 2
+Create Parentheses class - 2
+
+Create list class - 3
+
+Create parser class
+ - Create method to parse parentheses - 4
+ - Create other methods - 3
+
+Create Evaluator class
+ - Implement evaluating NumericValues - 3
+ - Implement evaluating BinaryOperators - 5
+ - Implement evaluating Parentheses - 3
+ - Implement evaluating UnaryOperators - 5
+
+Create Driver class
+ - Create getUserEquation method - 2
+ - Create evaluateEquation method - 3
+    - Handle when an error is thrown - 2
+    - Handle when a value is returned - 1
+ - Create run method - 2
