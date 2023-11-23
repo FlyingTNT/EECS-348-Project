@@ -1,2 +1,2 @@
-g++ *.cpp -o calculator
+powershell ./compile.ps1
 cmd /k

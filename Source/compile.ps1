@@ -1,0 +1,1 @@
+g++ (gci -r -fi *.cpp | % { $_.FullName}) -o calculator
