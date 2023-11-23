@@ -24,3 +24,20 @@ Create Driver class
     - Handle when an error is thrown - 2
     - Handle when a value is returned - 1
  - Create run method - 2
+
+
+Tasks:
+Coders/Testers: Create Evaluator class.
+
+Everyone else:
+ 1. Create Parentheses parser method + Parentheses class
+ 2. Create parse method for all other types(this will hand off to the parentheses parser when it finds parentheses) + NumericValue class
+ 3. Create Driver class
+ 4. Create Operator Classes
+
+# 1 and 2 will probably need to communicate to decide how their methods should talk. Imo, the parse method should just pass the whole equation
+string to the parseParentheses method, along with a pointer to the current index. The parseParentheses would return the Parentheses object it parsed
+and would update the index to the next index after the closing parentheses.
+
+In general, refer to the Architecture and Requirements docs. Especially be sure that your classes do everything those two docs say they will.
+If you have any questions, you can message me. I'll probably respond within an hour - I'll respond within the day at the latest.
