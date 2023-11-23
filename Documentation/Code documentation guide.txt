@@ -1,0 +1,120 @@
+This is a doc that lays out how the code and documentation should be formatted so that we're all consistent.
+These are based on my preferences because I couldn't find any good general c++ formatting guide.
+My preferences are based mainly on Java convention and Dr. Johnson's requirements for his programming assignments.
+
+You can look at List.hpp and List.tpp to see files that follow these guidelines.
+
+******Code Formatting******
+File Names:
+Each word starts with a capital letter, no spaces
+ex: FileReader.cpp, Square.cpp
+
+Class names:
+Same rules as file names.
+
+Classes:
+Each class should be in its own file. The name of that file == NameOfClass.[cpp/hpp/tpp]
+Each class should be seperated into:
+ - A header file (.hpp) with the class and methods declarations
+    - If you look at List.hpp, you'll see #ifndef, #define, and #endif. These are called header guards and are absolutely
+      necessary because they prevent headers from being loaded more than once.
+ - An implementation file (.cpp) that defines all of the class's methods
+   - .tpp is just for the implementations of classes that use templates. List does, but none of the other classes should.
+Everything should be private unless it *needs* to be accessed by an external class
+
+Variables:
+Names should use camel case.
+ex: integerValue, value
+Except for static/constant values, which should be ALL_CAPS_AND_HAVE_WORDS_SEPERATED_WITH_UNDERSCORES.
+
+Methods/Functions:
+Method names should use camel case.
+Argument names should use camel case.
+
+Curly braces:
+Curly braces shoud start on their own line in all cases.
+ex:
+void setValue(int value)
+{
+    this->value = value;
+}
+
+******Documentation*******
+It seems like the most common documentation method for c++ is called doxygen. It is horribly complicated and so I don't
+think we should use it.
+
+Instead, I think we should use this method, which VSCode supports (appears to be based on Javadoc):
+Header files:
+Imo header files don't need many comments because if you document your implementations using the methods I tell you, the documentation in your
+implementation files will show up when you hover over the methods in the header files. You do need to comment the things that are only in the
+header files - namely: class variables and the classes themselves. The variables can just have a regular inline comment (using //).
+The class should have a /** ... */ comment (I'll talk about this later) explaining what the class is and its purpose.
+
+Implementation files:
+Each method should be preceded by a multi-line comment. I'll give an example and explain the parts after:
+
+/**
+ * Preforms integer division on the given values.
+ * @param numerator The integer to be divided.
+ * @param denomenator The integer to divide the numerator by.
+ * @returns The result of the integer division of numerator by denomerator.
+ * @throws runtime_error If the denomerator is zero.
+*/
+int Math::divide(int numerator, int denomenator)
+{
+   ...
+}
+
+The comment is a multi-line comment that starts with /** (rather than /* like normal)
+It should begin with an explanation of the method/function
+Then, it should have an @param for each parameter explaining what that parameter is
+Then, it should have an @return (if it isn't void) explaining what it returns
+Finally, it should have an @throws for each exception that it throws, explaining the cases in which it throws them.
+If there are multiple authors for a given file, all of the methods should also have an @author field saying which author wrote them (can be mutliple).
+
+Within the method, include inline/multi-line comments as needed.
+As needed does not mean no comments. If your function is more complicated than a getter/setter, it needs comments.
+
+Files (in general):
+All files should start with a comment including:
+The name of the file,
+A one-line explanation of the purpose of the file,
+The name(s) of the author(s) of the file,
+The date the file was created.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
