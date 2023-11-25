@@ -23,7 +23,7 @@ List<T>::List()
  * @param item The item to append.
 */
 template <typename T>
-void List<T>::append(const T& item)
+void List<T>::append(T* item)
 {
     if(root == nullptr)//If the list is empty,
     {
@@ -49,7 +49,7 @@ void List<T>::append(const T& item)
  * @throws runtime_error if the list is empty.
 */
 template <typename T>
-T List<T>::pop()
+T* List<T>::pop()
 {
     if(root == nullptr)//If the list is empty,
     {
@@ -58,7 +58,7 @@ T List<T>::pop()
 
     if(!root->hasNext())//If the root is the only node in the list,
     {
-        T value = root->getValue();//Store root's value.
+        T* value = root->getValue();//Store root's value.
         delete root;//Deletes the root from memory
         root = nullptr;//Clears the root field
         return value;
@@ -75,7 +75,7 @@ T List<T>::pop()
         current = current->getNext();//Moves current forward
     }
 
-    T value = current->getValue();//Stores current's value so we can return it later
+    T* value = current->getValue();//Stores current's value so we can return it later
     delete current;//Deletes current from memory (we're about to remove the only referenc to it)
     last->setNext(nullptr);//Sets last's next node to a nullptr (it was perviously current)
     return value;//Returns the value of current that we stored earlier.
@@ -88,7 +88,7 @@ T List<T>::pop()
  * @throws out_of_range if the index < 0 or >= the length of the list.
 */
 template <typename T>
-T List<T>::get(int index)
+T* List<T>::get(int index)
 {
     if(index < 0)//If the index is negative,
     {
@@ -120,7 +120,7 @@ T List<T>::get(int index)
  * @throws out_of_range if the index < 0 or >= the length of the list. 
 */
 template <typename T>
-void List<T>::set(int index, const T& value)
+void List<T>::set(int index, T* value)
 {
     if(index < 0)//If the index is negative,
     {
@@ -210,7 +210,7 @@ void List<T>::remove(int index)
  * @throws out_of_range if the index < 0 or > the length of the list. 
 */
 template <typename T>
-void List<T>::insert(int index, T value)
+void List<T>::insert(int index, T* value)
 {
     if(index < 0)//If the given index is negative,
     {
@@ -331,12 +331,12 @@ std::ostream& operator << (std::ostream& stream, const List<T>& list)
     typename List<T>::Node* current = list.root;//The current node we're printing (starts with the root)
     while(current->hasNext())//While there is a node after the current,
     {
-        stream << current->getValue() << ", ";//Prints current's value and ", "
+        stream << *(current->getValue()) << ", ";//Prints current's value and ", "
         current = current->getNext();//Moves current forward.
     }
 
     //Once current is the last nose in the list,
-    stream << current->getValue() << "]";//Prints current's value and "]".
+    stream << *(current->getValue()) << "]";//Prints current's value and "]".
 }
 
 /**
@@ -344,7 +344,7 @@ std::ostream& operator << (std::ostream& stream, const List<T>& list)
  * @param value The value of the node.
 */
 template <typename T>
-List<T>::Node::Node(T value)
+List<T>::Node::Node(T* value)
 {
     next = nullptr;//Inititalizes the next node to a null pointer
     this->value = value;//Sets this's value to the given value.
@@ -375,7 +375,7 @@ void List<T>::Node::setNext(Node* next)
  * @returns The value contained in this node. 
 */
 template <typename T>
-T List<T>::Node::getValue()
+T* List<T>::Node::getValue()
 {
     return value;
 }
@@ -385,7 +385,7 @@ T List<T>::Node::getValue()
  * @param value The value to set value to.
 */
 template <typename T>
-void List<T>::Node::setValue(const T& value)
+void List<T>::Node::setValue(T* value)
 {
     this->value = value;//Sets value to the given value.
 }

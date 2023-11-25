@@ -18,12 +18,12 @@ class List
     public:
     List();
     ~List();
-    void append(const T& item);
-    T pop();
-    T get(int index);
-    void set(int index, const T& value);
+    void append(T* item);
+    T* pop();
+    T* get(int index);
+    void set(int index, T* value);
     void remove(int index);
-    void insert(int index, T value);
+    void insert(int index, T* value);
     int length();
 
     template <typename K>
@@ -33,15 +33,15 @@ class List
     class Node
     {
         public:
-        Node(T);
+        Node(T*);
         Node* getNext();
         void setNext(Node* next);
-        T getValue();
-        void setValue(const T& value);
+        T* getValue();
+        void setValue(T* value);
         bool hasNext();
 
         private:
-        T value;//The value stored in this node
+        T* value;//The value stored in this node
         Node* next;//The node that proceeds this one.
     };
     Node* root;//The first item in thisl list.
