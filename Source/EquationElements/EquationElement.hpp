@@ -14,9 +14,11 @@
 */
 class EquationElement
 {
-    virtual int getValue(EquationElement& preceding, EquationElement& proceeding);//Passes by reference
-    virtual int getPriority();
+    public:
+    virtual int getValue(EquationElement& preceding, EquationElement& proceeding) = 0;//Passes by reference
+    virtual int getPriority() = 0;
     virtual std::string getSymbol();
+    friend std::ostream& operator << (std::ostream& stream, EquationElement& element);
 };
 
 #endif
