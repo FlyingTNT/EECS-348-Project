@@ -1,3 +1,9 @@
+/**
+ * EquationElement.cpp
+ * Purpose: Implement non-pure virtual methods of EquationElement.
+ * Author: C. Cooper
+ * Date Created: 2023-11-25
+*/
 #include "EquationElement.hpp"
 #include <iostream>
 #include <string>
@@ -20,6 +26,6 @@ std::string EquationElement::getSymbol()
 */
 std::ostream& operator << (std::ostream& stream, EquationElement& element)
 {
-    stream << element.getSymbol();
+    stream << element.getSymbol();//Insert the element's symbol into the stream.
     return stream;
 }
