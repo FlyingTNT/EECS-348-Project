@@ -2,7 +2,7 @@
  * NumericValue.hpp
  * Purpose: A class to represent an integer value in an equation.
  * Author: C. Cooper
- * Date Created: 2023-11-25
+ * Date Created: 2023-11-28
 */
 
 #ifndef NUMERIC_VAL_H

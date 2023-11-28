@@ -2,7 +2,7 @@
  * NumericValue.cpp
  * Purpose: Implementation of the class defined in NumericValue.hpp
  * Author: C. Cooper
- * Date Created: 2023-11-25
+ * Date Created: 2023-11-28
 */
 
 #include "NumericValue.hpp"
