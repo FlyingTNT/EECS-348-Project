@@ -12,19 +12,21 @@
 /**
  * An operator in the equation with a single operand. The operator proceeds its operand.
 */
-class UnaryOperator : public EquationElement {
+class UnaryOperator : public EquationElement 
+{
 public:
-    virtual int getValue(EquationElement& operand) = 0;
-    virtual int getPriority() = 0;
-    virtual std::string getSymbol() = 0;
+    virtual int getValue(EquationElement* operand, EquationElement* ignored) override = 0;
+    virtual int getPriority() override = 0;
+    virtual std::string getSymbol() override = 0;
 };
 
 /**
  * Represented with the “-” symbol. Its value equals the value of its operand, multiplied by negative one.  
 */
-class Negation : public UnaryOperator {
+class Negation : public UnaryOperator 
+{
 public:
-    int getValue(EquationElement& operand) override;
+    int getValue(EquationElement* operand, EquationElement* ignored) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -32,9 +34,10 @@ public:
 /**
  * Represented with the “+” symbol. Its value equals the absolute value of its operand, or the square root of the square of its operand.
 */
-class AbsoluteValue : public UnaryOperator {
+class AbsoluteValue : public UnaryOperator 
+{
 public:
-    int getValue(EquationElement& operand) override;
+    int getValue(EquationElement* operand, EquationElement* ignored) override;
     int getPriority() override;
     std::string getSymbol() override;
 };

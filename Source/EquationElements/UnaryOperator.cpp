@@ -14,8 +14,9 @@
  * @param value The integer to be negated.
  * @returns The result of the negation.
 */
-int Negation::getValue(EquationElement& operand) {
-    int value = operand.getValue();
+int Negation::getValue(EquationElement* operand, EquationElement* ignored) 
+{
+    int value = operand->getValue(nullptr, nullptr);
     return -value;
 }
 
@@ -23,7 +24,8 @@ int Negation::getValue(EquationElement& operand) {
  * Implements the getPriority method to follow the order of operations.
  * Returns Negation's priority as 1
 */
-int Negation::getPriority() {
+int Negation::getPriority() 
+{
     return 1; 
 }
 
@@ -31,7 +33,8 @@ int Negation::getPriority() {
  * Implements the getSymbol method to use in stream insertion method.
  * Returns "-".
 */
-std::string Negation::getSymbol() {
+std::string Negation::getSymbol() 
+{
     return "-";
 }
 
@@ -42,8 +45,9 @@ std::string Negation::getSymbol() {
  * @param value The integer to be evaluated.
  * @returns The result of the Absolute Value operation.
 */
-int AbsoluteValue::getValue(EquationElement& operand) {
-    int value = operand.getValue();
+int AbsoluteValue::getValue(EquationElement* operand, EquationElement* ignored) 
+{
+    int value = operand->getValue(nullptr, nullptr);
     //if the value is less than 0 (negative), then its absolute value is its negation
     //otherwise, the positive value is equal to the absolue value
     return (value < 0) ? -value : value;
@@ -53,7 +57,8 @@ int AbsoluteValue::getValue(EquationElement& operand) {
  * Implements the getPriority method to follow the order of operations.
  * Returns AbsoluteValue;s priority as 1
 */
-int AbsoluteValue::getPriority() {
+int AbsoluteValue::getPriority() 
+{
     return 1;
 }
 
@@ -61,6 +66,7 @@ int AbsoluteValue::getPriority() {
  * Implements the getSymbol method to use in stream insertion method.
  * Returns "+".
 */
-std::string AbsoluteValue::getSymbol() {
+std::string AbsoluteValue::getSymbol() 
+{
     return "+";
 }
