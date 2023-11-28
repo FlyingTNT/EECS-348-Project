@@ -15,9 +15,25 @@
  * @param firstOperand The operand preceeding the operator.
  * @param secondOperand The operand proceeding the operator.
  * @returns The result of the addition of the two values.
+ * @throws std::runtime_error If given a nullptr
 */
 int Addition::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int firstOperand = preceding->getValue(nullptr, nullptr);
     int secondOperand = proceeding->getValue(nullptr, nullptr);
     return firstOperand + secondOperand;
@@ -48,9 +64,25 @@ std::string Addition::getSymbol()
  * @param firstOperand The operand preceeding the operator.
  * @param secondOperand The operand proceeding the operator.
  * @returns The result of the subtraction of the two values.
+ * @throws std::runtime_error If given a nullptr.
 */
 int Subtraction::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int firstOperand = preceding->getValue(nullptr, nullptr);
     int secondOperand = proceeding->getValue(nullptr, nullptr);
     
@@ -82,9 +114,25 @@ std::string Subtraction::getSymbol()
  * @param firstOperand The operand preceeding the operator.
  * @param secondOperand The operand proceeding the operator.
  * @returns The result of the multiplication of the two values.
+ * @throws std::runtime_error If given a nullptr.
 */
 int Multiplication::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int firstOperand = preceding->getValue(nullptr, nullptr);
     int secondOperand = proceeding->getValue(nullptr, nullptr);
     
@@ -116,17 +164,32 @@ std::string Multiplication::getSymbol()
  * @param firstOperand The operand preceeding the operator (numerator).
  * @param secondOperand The operand proceeding the operator (denominator).
  * @returns The result of the division of the two values.
- * @throws runtime_error If the denominator is zero
+ * @throws runtime_error If the denominator is zero or if given a nullptr
 */
 int Division::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int firstOperand = preceding->getValue(nullptr, nullptr);
     int secondOperand = proceeding->getValue(nullptr, nullptr);
     
     if (secondOperand == 0) 
     {
         //Error handling for division by zero
-        throw std::runtime_error("Division by zero");
+        throw std::runtime_error("cannot divide by zero!");
     }
     
     return firstOperand / secondOperand;
@@ -157,20 +220,35 @@ std::string Division::getSymbol()
  * @param firstOperand The operand preceeding the operator.
  * @param secondOperand The operand proceeding the operator.
  * @returns The result of the modulo of the two values.
- * @throws runtime_error If the secondOperand is zero.
+ * @throws runtime_error If the secondOperand is not positive or it's given a nullptr.
 */
 int Modulo::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int firstOperand = preceding->getValue(nullptr, nullptr);
     int secondOperand = proceeding->getValue(nullptr, nullptr);
     
     if (secondOperand == 0) 
     {
         //Error handling for modulo by zero
-        throw std::runtime_error("Modulo by Zero");
+        throw std::runtime_error("cannot modulo by zero!");
     }else if (secondOperand < 0)
     {
-        throw std::runtime_error("Negative Operand");
+        throw std::runtime_error("%'s second operator must not be negative!");
     }
     
     return firstOperand % secondOperand;
@@ -201,10 +279,25 @@ std::string Modulo::getSymbol()
  * @param base The operand preceeding the operator.
  * @param exponent The operand proceeding the operator.
  * @returns The result of the exponentiation of the two values.
- * @throws runtime_error If exponent is negative.
+ * @throws runtime_error If exponent is negative or it is given a nullptr.
 */
 int Exponentiation::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
+    if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
+    {
+        /*
+            There are basically two cases where this might happen:
+            1. It is being treated as a NumericValue (operand). In this case, both will be nullpointers
+            2. It is the first/last item in the equation. In this case, only one will be nullptr.
+        */
+        if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
+        {
+            throw std::runtime_error("operator as operand!");
+        }
+        //If only one is nullptr,
+        throw std::runtime_error("missing operand!");
+    }
+
     int base = preceding->getValue(nullptr, nullptr);
     int exponent = proceeding->getValue(nullptr, nullptr);
     
