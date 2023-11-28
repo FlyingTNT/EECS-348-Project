@@ -13,7 +13,7 @@
 /**
  * Examples of how you can use the List class.
 */
-int run()//Could change this to main to run standalone
+int runListEx()//Could change this to main to run standalone
 {
     List<std::string> list;//Creates a new List of ints
 
