@@ -20,6 +20,14 @@ Parentheses::Parentheses(List<EquationElement>* contents)
 }
 
 /**
+ * Destructor for Parentheses. Deletes the list of elements it contains.
+*/
+Parentheses::~Parentheses()
+{
+    delete contents;
+}
+
+/**
  * Gets the value of the equation contained within this parentheses.
  * @param preceding The EquationElement preceding this element in the equation. Ignored.
  * @param proceeding The EquationElement proceeding this element in the equation. Ignored.

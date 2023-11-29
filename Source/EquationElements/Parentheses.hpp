@@ -21,6 +21,7 @@ class Parentheses : public EquationElement
 
     public:
     Parentheses(List<EquationElement>* contents);
+    ~Parentheses();
 
     int getValue(EquationElement* preceding, EquationElement* proceeding) override;
     std::string getSymbol() override;
