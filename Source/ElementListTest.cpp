@@ -13,7 +13,7 @@
 #include "EquationElements/Parentheses.hpp"
 #include <iostream>
 
-int main()//You can change to main if you Like
+int runElementTest()//You can change to main if you Like
 {
     List<EquationElement> outer;
     outer.append(new NumericValue(1));
