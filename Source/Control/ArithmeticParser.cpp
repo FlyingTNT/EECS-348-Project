@@ -43,36 +43,36 @@ static List<EquationElement> parse(std::string input)
             case '+':
                 if(lastWasOperator)
                 {
-                    outList.append(new Addition());
-                }else{
                     outList.append(new AbsoluteValue());
+                }else{
+                    outList.append(new Addition());
                 }
                 lastWasOperator = true;
                 break;
             case '-':
                 if(lastWasOperator)
                 {
-                    outList.append(new Subtraction());
+                    outList.append(new Negation());
                 }else{
-                    outList.append(new AbsoluteValue());
+                    outList.append(new Subtraction());
                 }
                 lastWasOperator = true;
                 break;
             case '*':
                 outList.append(new Multiplication());
-                lastWasOperator = false;
+                lastWasOperator = true;
                 break;
             case '/':
                 outList.append(new Division());
-                lastWasOperator = false;
+                lastWasOperator = true;
                 break;
             case '^':
-                outlist.append(new Exponentiation());
-                lastWasOperator = false;
+                outList.append(new Exponentiation());
+                lastWasOperator = true;
                 break;
             case '%':
-                outlist.append(new Modulo());
-                lastWasOperator = false;
+                outList.append(new Modulo());
+                lastWasOperator = true;
                 break;
             case '0':
             case '1':
