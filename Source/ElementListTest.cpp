@@ -5,15 +5,15 @@
  * Date Created: 2023-11-28
 */
 
-#include "../Datastructures/List.hpp"
-#include "../EquationElements/EquationElement.hpp"
-#include "../EquationElements/UnaryOperator.hpp"
-#include "../EquationElements/BinaryOperator.hpp"
-#include "../EquationElements/NumericValue.hpp"
-#include "../EquationElements/Parentheses.hpp"
+#include "Datastructures/List.hpp"
+#include "EquationElements/EquationElement.hpp"
+#include "EquationElements/UnaryOperator.hpp"
+#include "EquationElements/BinaryOperator.hpp"
+#include "EquationElements/NumericValue.hpp"
+#include "EquationElements/Parentheses.hpp"
 #include <iostream>
 
-int runListTest()//You can change to main if you Like
+int main()//You can change to main if you Like
 {
     List<EquationElement> outer;
     outer.append(new NumericValue(1));
