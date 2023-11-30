@@ -12,12 +12,12 @@
 
 /**
  * Performs negation on given value.
- * @param operand The integer to be negated.
  * @param ignored Ignored. Only here for polymorphism.
+ * @param operand The integer to be negated.
  * @returns The result of the negation.
  * @throws std::runtime_error If given a nullptr.
 */
-int Negation::getValue(EquationElement* operand, EquationElement* ignored) 
+int Negation::getValue(EquationElement* ignored, EquationElement* operand) 
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
@@ -50,12 +50,12 @@ std::string Negation::getSymbol()
 
 /**
  * Finds the Absolute Value of a given value.
- * @param operand The integer to be evaluated.
  * @param ignored Ignored. Only here for polymorphism.
+ * @param operand The integer to be evaluated.
  * @returns The result of the Absolute Value operation.
  * @throws std::runtime_error If given a nullptr.
 */
-int AbsoluteValue::getValue(EquationElement* operand, EquationElement* ignored) 
+int AbsoluteValue::getValue(EquationElement* ignored, EquationElement* operand) 
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
