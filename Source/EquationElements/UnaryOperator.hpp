@@ -15,7 +15,7 @@
 class UnaryOperator : public EquationElement 
 {
 public:
-    virtual int getValue(EquationElement* ignored, EquationElement* operand) override = 0;
+    virtual float getValue(EquationElement* ignored, EquationElement* operand) override = 0;
     virtual int getPriority() override = 0;
     virtual std::string getSymbol() override = 0;
 };
@@ -26,7 +26,7 @@ public:
 class Negation : public UnaryOperator 
 {
 public:
-    int getValue(EquationElement* ignored, EquationElement* operand) override;
+    float getValue(EquationElement* ignored, EquationElement* operand) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -37,7 +37,7 @@ public:
 class AbsoluteValue : public UnaryOperator 
 {
 public:
-    int getValue(EquationElement* ignored, EquationElement* operand) override;
+    float getValue(EquationElement* ignored, EquationElement* operand) override;
     int getPriority() override;
     std::string getSymbol() override;
 };

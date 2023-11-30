@@ -17,7 +17,7 @@
  * @returns The result of the addition of the two values.
  * @throws std::runtime_error If given a nullptr
 */
-int Addition::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Addition::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -34,8 +34,8 @@ int Addition::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error("missing operand!");
     }
 
-    int firstOperand = preceding->getValue(nullptr, nullptr);
-    int secondOperand = proceeding->getValue(nullptr, nullptr);
+    float firstOperand = preceding->getValue(nullptr, nullptr);
+    float secondOperand = proceeding->getValue(nullptr, nullptr);
     return firstOperand + secondOperand;
 }
 
@@ -66,7 +66,7 @@ std::string Addition::getSymbol()
  * @returns The result of the subtraction of the two values.
  * @throws std::runtime_error If given a nullptr.
 */
-int Subtraction::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Subtraction::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -83,8 +83,8 @@ int Subtraction::getValue(EquationElement* preceding, EquationElement* proceedin
         throw std::runtime_error("missing operand!");
     }
 
-    int firstOperand = preceding->getValue(nullptr, nullptr);
-    int secondOperand = proceeding->getValue(nullptr, nullptr);
+    float firstOperand = preceding->getValue(nullptr, nullptr);
+    float secondOperand = proceeding->getValue(nullptr, nullptr);
     
     return firstOperand - secondOperand;
 }
@@ -116,7 +116,7 @@ std::string Subtraction::getSymbol()
  * @returns The result of the multiplication of the two values.
  * @throws std::runtime_error If given a nullptr.
 */
-int Multiplication::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Multiplication::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -133,8 +133,8 @@ int Multiplication::getValue(EquationElement* preceding, EquationElement* procee
         throw std::runtime_error("missing operand!");
     }
 
-    int firstOperand = preceding->getValue(nullptr, nullptr);
-    int secondOperand = proceeding->getValue(nullptr, nullptr);
+    float firstOperand = preceding->getValue(nullptr, nullptr);
+    float secondOperand = proceeding->getValue(nullptr, nullptr);
     
     return firstOperand * secondOperand;
 }
@@ -166,7 +166,7 @@ std::string Multiplication::getSymbol()
  * @returns The result of the division of the two values.
  * @throws runtime_error If the denominator is zero or if given a nullptr
 */
-int Division::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Division::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -183,8 +183,8 @@ int Division::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error("missing operand!");
     }
 
-    int firstOperand = preceding->getValue(nullptr, nullptr);
-    int secondOperand = proceeding->getValue(nullptr, nullptr);
+    float firstOperand = preceding->getValue(nullptr, nullptr);
+    float secondOperand = proceeding->getValue(nullptr, nullptr);
     
     if (secondOperand == 0) 
     {
@@ -222,7 +222,7 @@ std::string Division::getSymbol()
  * @returns The result of the modulo of the two values.
  * @throws runtime_error If the secondOperand is not positive or it's given a nullptr.
 */
-int Modulo::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Modulo::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -239,8 +239,8 @@ int Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error("missing operand!");
     }
 
-    int firstOperand = preceding->getValue(nullptr, nullptr);
-    int secondOperand = proceeding->getValue(nullptr, nullptr);
+    int firstOperand = static_cast<int>(preceding->getValue(nullptr, nullptr));
+    int secondOperand = static_cast<int>(proceeding->getValue(nullptr, nullptr));
     
     if (secondOperand == 0) 
     {
@@ -281,7 +281,7 @@ std::string Modulo::getSymbol()
  * @returns The result of the exponentiation of the two values.
  * @throws runtime_error If exponent is negative or it is given a nullptr.
 */
-int Exponentiation::getValue(EquationElement* preceding, EquationElement* proceeding) 
+float Exponentiation::getValue(EquationElement* preceding, EquationElement* proceeding) 
 {
     if(preceding == nullptr || proceeding == nullptr)//If it is given nullpointers,
     {
@@ -298,8 +298,8 @@ int Exponentiation::getValue(EquationElement* preceding, EquationElement* procee
         throw std::runtime_error("missing operand!");
     }
 
-    int base = preceding->getValue(nullptr, nullptr);
-    int exponent = proceeding->getValue(nullptr, nullptr);
+    float base = preceding->getValue(nullptr, nullptr);
+    float exponent = proceeding->getValue(nullptr, nullptr);
     
     if (exponent < 0) 
     {
@@ -307,9 +307,9 @@ int Exponentiation::getValue(EquationElement* preceding, EquationElement* procee
         throw std::runtime_error("Negative exponent error");
     }
     
-    int result = 1;
+    float result = 1;
     //for the range of the exponent, multiply the base by itself
-    for (int i = 0; i < exponent; ++i) 
+    for (float i = 0; i < exponent; ++i) 
     {
         result *= base;
     }

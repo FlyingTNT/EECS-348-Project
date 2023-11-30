@@ -15,7 +15,7 @@
 class BinaryOperator : public EquationElement 
 {
 public:
-    virtual int getValue(EquationElement* preceding, EquationElement* proceeding) override = 0;
+    virtual float getValue(EquationElement* preceding, EquationElement* proceeding) override = 0;
     virtual int getPriority() override = 0;
     virtual std::string getSymbol() override = 0;
 };
@@ -26,7 +26,7 @@ public:
 class Addition : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -37,7 +37,7 @@ public:
 class Subtraction : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -48,7 +48,7 @@ public:
 class Multiplication : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -61,7 +61,7 @@ public:
 class Division : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -74,7 +74,7 @@ public:
 class Modulo : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };
@@ -87,7 +87,7 @@ public:
 class Exponentiation : public BinaryOperator 
 {
 public:
-    int getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
     int getPriority() override;
     std::string getSymbol() override;
 };

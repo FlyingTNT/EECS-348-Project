@@ -7,12 +7,14 @@
 
 #include "NumericValue.hpp"
 #include <string>
+#include <sstream>
+#include <iomanip>
 
 /**
- * Creates a NumericValue representing the given integer.
+ * Creates a NumericValue representing the given float.
  * @param value The value of this EquationElement.
 */
-NumericValue::NumericValue(int value)
+NumericValue::NumericValue(float value)
 {
     this->value = value;
 }
@@ -23,7 +25,7 @@ NumericValue::NumericValue(int value)
  * @param proceeding Ignored. Only here for polymorphism.
  * @returns The value of this number.
 */
-int NumericValue::getValue(EquationElement* preceding, EquationElement* proceeding)
+float NumericValue::getValue(EquationElement* preceding, EquationElement* proceeding)
 {
     return value;
 }
@@ -40,10 +42,13 @@ int NumericValue::getPriority()
 
 /**
  * Returns a string representation of this element. 
- * This is just the integer that it contains.
+ * This is just the float that it contains, to three places.
  * @returns A string representation of this element
 */
 std::string NumericValue::getSymbol() 
 {
-    return std::to_string(value);//Uses to_string to get a string repr of the value.
+    //This code taken from https://stackoverflow.com/questions/29200635/convert-float-to-string-with-precision-number-of-decimal-digits-specified
+    std::stringstream stream;
+    stream << std::fixed << std::setprecision(3) << value;
+    return stream.str();
 }

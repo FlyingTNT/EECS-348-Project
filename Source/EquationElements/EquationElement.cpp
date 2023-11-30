@@ -6,6 +6,7 @@
 */
 #include "EquationElement.hpp"
 #include <iostream>
+#include <iomanip>
 #include <string>
 
 /**
