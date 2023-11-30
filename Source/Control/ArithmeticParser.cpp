@@ -13,6 +13,7 @@ created 11/28/2023
 #include "../EquationElements/BinaryOperator.hpp"
 #include "../EquationElements/NumericValue.hpp"
 #include "../EquationElements/Parentheses.hpp"
+#include "Parser.hpp"
 //This file is located in the Control folder.
 
 static int parseInt(std::string string, int* index)//Parses the int starting at the given index, also moves the index to the end of the int
@@ -29,9 +30,9 @@ static int parseInt(std::string string, int* index)//Parses the int starting at 
     return std::stoi(string.substr(start, (*index)));
 }
 
-static List<EquationElement> parse(std::string input)
+List<EquationElement>* Parser::parse(std::string input)
 {
-    List<EquationElement> outList;
+    List<EquationElement>* outListPtr = new List<EquationElement>;
     bool lastWasOperator = true;//Flag used to tell if +/- should be unary (true) or binary (false)
     std::cout << "Enter\n";
     for(int i = 0; i < input.length(); i++)//For each char in the input,
@@ -43,35 +44,35 @@ static List<EquationElement> parse(std::string input)
             case '+':
                 if(lastWasOperator)
                 {
-                    outList.append(new AbsoluteValue());
+                    outListPtr->append(new AbsoluteValue());
                 }else{
-                    outList.append(new Addition());
+                    outListPtr->append(new Addition());
                 }
                 lastWasOperator = true;
                 break;
             case '-':
                 if(lastWasOperator)
                 {
-                    outList.append(new Negation());
+                    outListPtr->append(new Negation());
                 }else{
-                    outList.append(new Subtraction());
+                    outListPtr->append(new Subtraction());
                 }
                 lastWasOperator = true;
                 break;
             case '*':
-                outList.append(new Multiplication());
+                outListPtr->append(new Multiplication());
                 lastWasOperator = true;
                 break;
             case '/':
-                outList.append(new Division());
+                outListPtr->append(new Division());
                 lastWasOperator = true;
                 break;
             case '^':
-                outList.append(new Exponentiation());
+                outListPtr->append(new Exponentiation());
                 lastWasOperator = true;
                 break;
             case '%':
-                outList.append(new Modulo());
+                outListPtr->append(new Modulo());
                 lastWasOperator = true;
                 break;
             case '0':
@@ -84,17 +85,17 @@ static List<EquationElement> parse(std::string input)
             case '7':
             case '8':
             case '9'://Parseint will parse the int starting at i and also move i to the end of the int
-                outList.append(new NumericValue(parseInt(input, &i)));
+                outListPtr->append(new NumericValue(parseInt(input, &i)));
                 lastWasOperator = false;
                 break;
-            case '(':
+            /*case '(':
                 //Talk to Claire about how to integrate her parentheses parser.
                 List<EquationElement> parenthesesList;
                 while (i != ')'){
                     parenthesesList.append(i);
                     i++;
                 }//remove outer set of parentheses append to parenthesesList
-                outList.append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis function
+                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis function
                 lastWasOperator = false;
                 break;
             case '[':
@@ -102,7 +103,7 @@ static List<EquationElement> parse(std::string input)
                     parenthesesList.append(i);
                     i++;
                 }//remove outer set of brackets append to parenthesesList
-                outList.append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
+                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
                 lastWasOperator = false;
                 break;
             case '{':
@@ -110,9 +111,9 @@ static List<EquationElement> parse(std::string input)
                     parenthesesList.append(i);
                     i++;
                 }//remove outer set of curly braces append to parenthesesList
-                outList.append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
+                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
                 lastWasOperator = false;
-                break;
+                break;*/
             case ')':
             case ']':
             case '}'://If we have a closing parentheses without an openeing one
@@ -121,13 +122,12 @@ static List<EquationElement> parse(std::string input)
                 throw std::runtime_error("illegal character: " + std::to_string(c) + "!");
         }
     }
-
-    return outList;
+    return outListPtr;
 }
 
-int main()
+int run()
 {
-    std::cout << parse("15+127890");
+    std::cout << Parser::parse("15+127890");
     system("pause");
     return 0;
 }
