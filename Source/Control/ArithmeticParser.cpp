@@ -129,6 +129,8 @@ List<EquationElement>* Parser::parse(std::string input)
             case ']':
             case '}'://If we have a closing parentheses without an openeing one
                 throw std::runtime_error("unmatched parentheses!");
+            case ' ':
+                break;
             default://If it's not a character that we have a defined token for,
                 throw std::runtime_error("illegal character: " + std::string(1, c) + "!");
         }
