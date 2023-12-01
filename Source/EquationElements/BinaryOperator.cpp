@@ -7,6 +7,7 @@
 
 #include "BinaryOperator.hpp"
 #include <stdexcept>
+#include <cmath>
 
 //Addition implementation
 
@@ -301,20 +302,7 @@ float Exponentiation::getValue(EquationElement* preceding, EquationElement* proc
     float base = preceding->getValue(nullptr, nullptr);
     float exponent = proceeding->getValue(nullptr, nullptr);
     
-    if (exponent < 0) 
-    {
-        //Error handling for negative exponent
-        throw std::runtime_error("Negative exponent error");
-    }
-    
-    float result = 1;
-    //for the range of the exponent, multiply the base by itself
-    for (float i = 0; i < exponent; ++i) 
-    {
-        result *= base;
-    }
-    
-    return result;
+    return pow(base, exponent);
 }
 
 /**
