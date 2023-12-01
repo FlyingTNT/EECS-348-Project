@@ -45,7 +45,7 @@ int main()
             */
             float value = Evaluator::evaluate(equation);//Evaluates the equation
             delete equation;//Remove equation from the heap (we don't need it anymore)
-            if(static_cast<int>(value) == value)
+            if(static_cast<int>(value) == value)//If the value is an int (so that we don't use decimal places after the int)
             {
                 std::cout << userIn << " = " << static_cast<int>(value) << "\n\n";//Prints the evaluated value
             }else{
