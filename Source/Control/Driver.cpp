@@ -10,6 +10,7 @@
 #include "Evaluator.hpp"
 #include <string>
 #include <iostream>
+#include <iomanip>
 
 /**
  * The system's main method.
@@ -19,12 +20,14 @@ int main()
 {
     std::string userIn;//Variable to hold the user's input.
 
+    std::cout << std::fixed << std::setprecision(3);//Make cout not use scientific notation
+
     std::cout << "Please enter any equation, or \"exit\" to quit:\n";//Introduce the user to the mechanics of the system
 
     while(true)//Repeatedly gets and evaluates user input. Broken when the user inputs "exit"
     {
         std::cout << "Input: ";//Prompt the user for input
-        std::cin >> userIn;//Store the user's input in userIn
+        std::getline(std::cin, userIn);//Store the user's input in userIn
         if(userIn.compare("exit") == 0)//If the input was "exit",
         {
             break;//Stop the loop (and by extension, the program)
@@ -42,7 +45,12 @@ int main()
             */
             float value = Evaluator::evaluate(equation);//Evaluates the equation
             delete equation;//Remove equation from the heap (we don't need it anymore)
-            std::cout << userIn << " = " << value << "\n\n";//Prints the evaluated value
+            if(static_cast<int>(value) == value)
+            {
+                std::cout << userIn << " = " << static_cast<int>(value) << "\n\n";//Prints the evaluated value
+            }else{
+                std::cout << userIn << " = " << value << "\n\n";//Prints the evaluated value
+            }
         }catch(std::runtime_error err)//Catch any error the parse or evaluate threw
         {
             if(!(equation == nullptr))
