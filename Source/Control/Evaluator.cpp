@@ -53,7 +53,7 @@ static int getHighestPriorityIndex(List<EquationElement>* equation) {
  * @returns the value of the given expression equation
  * @throws runtime error if an operator is missing an operand
 */
-int Evaluator::evaluate(List<EquationElement>* equation) {
+float Evaluator::evaluate(List<EquationElement>* equation) {
   while (equation->length() > 0) {
     // get index of highest priority element
     int index = getHighestPriorityIndex(equation);

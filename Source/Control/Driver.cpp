@@ -40,7 +40,7 @@ int main()
                 Evaluates the equation and stores the result and then prints the result. This can't be done in one line
                 because if it was, we'd still print userIn = even if there was an error.
             */
-            int value = Evaluator::evaluate(equation);//Evaluates the equation
+            float value = Evaluator::evaluate(equation);//Evaluates the equation
             delete equation;//Remove equation from the heap (we don't need it anymore)
             std::cout << userIn << " = " << value << "\n\n";//Prints the evaluated value
         }catch(std::runtime_error err)//Catch any error the parse or evaluate threw
