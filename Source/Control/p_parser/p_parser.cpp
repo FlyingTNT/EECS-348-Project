@@ -59,7 +59,7 @@ private:
     }
 };
 
-int main() {
+int runPParser() {
     // Test the parentheses parser with tokenization
     std::string expression = "({[5 + 2] * 3} - 1)";
 
