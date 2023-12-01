@@ -33,6 +33,11 @@ int main()
             break;//Stop the loop (and by extension, the program)
         }
 
+        if(userIn.compare("") == 0)//If the user didn't give input
+        {
+            continue;//Retry
+        }
+
         List<EquationElement>* equation = nullptr;
         try//The parse and evaluate methods will throw any errors they encounter.
         {
