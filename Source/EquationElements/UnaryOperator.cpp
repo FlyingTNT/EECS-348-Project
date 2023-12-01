@@ -34,7 +34,7 @@ float Negation::getValue(EquationElement* ignored, EquationElement* operand)
 */
 int Negation::getPriority() 
 {
-    return 1; 
+    return 2; 
 }
 
 /**
@@ -74,7 +74,7 @@ float AbsoluteValue::getValue(EquationElement* ignored, EquationElement* operand
 */
 int AbsoluteValue::getPriority() 
 {
-    return 1;
+    return 2;
 }
 
 /**

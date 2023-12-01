@@ -6,9 +6,8 @@
 */
 #include "Parentheses.hpp"
 #include "../Datastructures/List.hpp"
+#include "../Control/Evaluator.hpp"
 #include <string>
-
-class Evaluator{public:static float evaluate(List<EquationElement>*){return -1;}};//Forward declare Evaluator because it isn't made yet.
 
 /**
  * Creates a Parentheses object that contains the given List of EquationElements.
@@ -35,7 +34,7 @@ Parentheses::~Parentheses()
 */
 float Parentheses::getValue(EquationElement* preceding, EquationElement* proceeding)
 {
-    return Evaluator::evaluate(contents);//Uses the Evaluator class to calculate the value.
+    return Evaluator::evaluate(*contents);//Uses the Evaluator class to calculate the value.
 }
 
 /**
@@ -61,5 +60,5 @@ std::string Parentheses::getSymbol()
 */
 int Parentheses::getPriority()
 {
-    return 4;
+    return 5;
 }

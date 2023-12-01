@@ -145,7 +145,7 @@ float Multiplication::getValue(EquationElement* preceding, EquationElement* proc
 */
 int Multiplication::getPriority() 
 {
-    return 2;
+    return 3;
 }
 
 /**
@@ -201,7 +201,7 @@ float Division::getValue(EquationElement* preceding, EquationElement* proceeding
 */
 int Division::getPriority() 
 {
-    return 2;
+    return 3;
 }
 
 /**
@@ -260,7 +260,7 @@ float Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
 */
 int Modulo::getPriority() 
 {
-    return 2;
+    return 3;
 }
 
 /**
@@ -323,7 +323,7 @@ float Exponentiation::getValue(EquationElement* preceding, EquationElement* proc
 */
 int Exponentiation::getPriority() 
 {
-    return 3;
+    return 4;
 }
 
 /**
