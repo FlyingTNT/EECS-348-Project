@@ -76,7 +76,7 @@ float Evaluator::evaluate(List<EquationElement>* equation) {
       } else if (priority == 2) {
         // throw if no element is after it
         if (index + 1 == equation->length()) {
-          throw std::runtime_error("");
+          throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
         }
 
         // get next element
@@ -91,7 +91,7 @@ float Evaluator::evaluate(List<EquationElement>* equation) {
       } else {
         // throw if the element has nothing before or after it
         if (index == 0 || index + 1 == equation->length()) {
-          throw std::runtime_error("");
+          throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
         }
 
         // get operators before and after the current element
