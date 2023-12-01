@@ -26,7 +26,7 @@ static int parseInt(std::string string, int* index)//Parses the int starting at 
             (*index)--;
             try
             {
-                return std::stoi(string.substr(start, (*index)+1));
+                return std::stoi(string.substr(start, (*index)+1 - start));
             }catch(std::out_of_range)
             {
                 throw std::runtime_error("input overflow!");
@@ -35,11 +35,37 @@ static int parseInt(std::string string, int* index)//Parses the int starting at 
     }
     try
     {
-        return std::stoi(string.substr(start, (*index)));
+        return std::stoi(string.substr(start, (*index) - start));
     }catch(std::out_of_range)
     {
         throw std::runtime_error("input overflow!");
     }
+}
+
+static Parentheses* parseParentheses(std::string string, int* index)
+{
+    (*index)++;
+    int depth = 1;
+    int start = *index;
+    for(; *index < string.length(); (*index)++)
+    {
+        if(string.at(*index) == '(')
+        {
+            depth++;
+            continue;
+        }
+
+        if(string.at(*index) == ')')
+        {
+            if(depth == 1)
+            {
+                return new Parentheses(Parser::parse(string.substr(start, (*index) - start)));
+            }
+            depth--;
+        }
+    }
+
+    throw std::runtime_error("unmatched parentheses!");
 }
 
 List<EquationElement>* Parser::parse(std::string input)
@@ -99,35 +125,10 @@ List<EquationElement>* Parser::parse(std::string input)
                 outListPtr->append(new NumericValue(parseInt(input, &i)));
                 lastWasOperator = false;
                 break;
-            /*case '(':
-                //Talk to Claire about how to integrate her parentheses parser.
-                List<EquationElement> parenthesesList;
-                while (i != ')'){
-                    parenthesesList.append(i);
-                    i++;
-                }//remove outer set of parentheses append to parenthesesList
-                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis function
-                lastWasOperator = false;
+            case '(':
+                outListPtr->append(parseParentheses(input, &i));
                 break;
-            case '[':
-                while (i != ']'){
-                    parenthesesList.append(i);
-                    i++;
-                }//remove outer set of brackets append to parenthesesList
-                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
-                lastWasOperator = false;
-                break;
-            case '{':
-                while (i != '}'){
-                    parenthesesList.append(i);
-                    i++;
-                }//remove outer set of curly braces append to parenthesesList
-                outListPtr->append(Parentheses(parenthesesList));// pass parenthesesList to parenthesis functio
-                lastWasOperator = false;
-                break;*/
-            case ')':
-            case ']':
-            case '}'://If we have a closing parentheses without an openeing one
+            case ')'://If we have a closing parentheses without an openeing one
                 throw std::runtime_error("unmatched parentheses!");
             case ' ':
                 break;

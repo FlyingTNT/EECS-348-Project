@@ -42,7 +42,11 @@ int main()
         try//The parse and evaluate methods will throw any errors they encounter.
         {
             equation = Parser::parse(userIn);//Parse and store the user input.
-            std::cout << "Parsed " << userIn << " to " << *equation << "\n";//Print the parsed list (DEBUG ONLY, DELETE IN FINAL VERSION
+            std::cout << "Parsed " << userIn << " to " << *equation << "\n";//Print the parsed list (DEBUG ONLY, DELETE IN FINAL VERSION)
+            if(equation->length() == 0)//If the user only gave spaces,
+            {
+                continue;//Retry
+            }
             
             /*
                 Evaluates the equation and stores the result and then prints the result. This can't be done in one line

@@ -64,6 +64,7 @@ float Evaluator::evaluate(List<EquationElement>* equation) {
     // if the operator is parens, recurse into evaluate() with getValue call
     if (priority == 5) {
       equation->set(index, new NumericValue(oper->getValue(nullptr, nullptr)));
+      continue;
     }
 
     try {
