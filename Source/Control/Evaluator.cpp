@@ -8,12 +8,7 @@
 #include "Evaluator.hpp"
 #include "../Datastructures/List.hpp"
 #include "../EquationElements/EquationElement.hpp"
-#include "../EquationElements/UnaryOperator.hpp"
-#include "../EquationElements/BinaryOperator.hpp"
 #include "../EquationElements/NumericValue.hpp"
-#include "../EquationElements/Parentheses.hpp"
-#include <iostream>
-
 
 /**
  * Finds the index of the next operation to perform
