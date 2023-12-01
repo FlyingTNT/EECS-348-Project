@@ -7,7 +7,7 @@
 class Evaluator
 {
     public:
-    static int evaluate(List<EquationElement>&);
+    static int evaluate(List<EquationElement>*);
 };
 
 #endif

@@ -34,7 +34,7 @@ Parentheses::~Parentheses()
 */
 float Parentheses::getValue(EquationElement* preceding, EquationElement* proceeding)
 {
-    return Evaluator::evaluate(*contents);//Uses the Evaluator class to calculate the value.
+    return Evaluator::evaluate(contents);//Uses the Evaluator class to calculate the value.
 }
 
 /**

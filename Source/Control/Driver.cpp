@@ -7,10 +7,9 @@
 #include "../Datastructures/List.hpp"
 #include "../EquationElements/EquationElement.hpp"
 #include "Parser.hpp"
+#include "Evaluator.hpp"
 #include <string>
 #include <iostream>
-
-class Evaluator{public: static int evaluate(List<EquationElement>*){return -1;}};//Forward declaration until actual class is made
 
 /**
  * The system's main method.
