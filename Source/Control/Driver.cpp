@@ -30,7 +30,7 @@ int main()
             break;//Stop the loop (and by extension, the program)
         }
 
-        List<EquationElement>* equation;
+        List<EquationElement>* equation = nullptr;
         try//The parse and evaluate methods will throw any errors they encounter.
         {
             equation = Parser::parse(userIn);//Parse and store the user input.
@@ -45,7 +45,10 @@ int main()
             std::cout << userIn << " = " << value << "\n\n";//Prints the evaluated value
         }catch(std::runtime_error err)//Catch any error the parse or evaluate threw
         {
-            delete equation;//Remove equation from the heap (if there's an error in evaluate, it won't be deleted in the try).
+            if(!(equation == nullptr))
+            {
+                delete equation;//Remove equation from the heap (if there's an error in evaluate, it won't be deleted in the try).
+            }
             std::cout << "Error: " << err.what() << "\n\n";//Print "Error: " {the error message}.
         }
     }

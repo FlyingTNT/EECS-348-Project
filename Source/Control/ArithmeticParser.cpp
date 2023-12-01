@@ -24,17 +24,28 @@ static int parseInt(std::string string, int* index)//Parses the int starting at 
         if(!(std::isdigit(string.at(*index))))
         {
             (*index)--;
-            return std::stoi(string.substr(start, (*index)+1));
+            try
+            {
+                return std::stoi(string.substr(start, (*index)+1));
+            }catch(std::out_of_range)
+            {
+                throw std::runtime_error("input overflow!");
+            }
         }
     }
-    return std::stoi(string.substr(start, (*index)));
+    try
+    {
+        return std::stoi(string.substr(start, (*index)));
+    }catch(std::out_of_range)
+    {
+        throw std::runtime_error("input overflow!");
+    }
 }
 
 List<EquationElement>* Parser::parse(std::string input)
 {
     List<EquationElement>* outListPtr = new List<EquationElement>;
     bool lastWasOperator = true;//Flag used to tell if +/- should be unary (true) or binary (false)
-    std::cout << "Enter\n";
     for(int i = 0; i < input.length(); i++)//For each char in the input,
     {
         char c = input.at(i);//Gets the character in the input at i
@@ -119,7 +130,7 @@ List<EquationElement>* Parser::parse(std::string input)
             case '}'://If we have a closing parentheses without an openeing one
                 throw std::runtime_error("unmatched parentheses!");
             default://If it's not a character that we have a defined token for,
-                throw std::runtime_error("illegal character: " + std::to_string(c) + "!");
+                throw std::runtime_error("illegal character: " + std::string(1, c) + "!");
         }
     }
     return outListPtr;
