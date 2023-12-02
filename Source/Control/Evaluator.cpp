@@ -67,46 +67,41 @@ double Evaluator::evaluate(List<EquationElement>* equation) {
       continue;
     }
 
-    try {
-      // check if priority is of NumericValue
-      // essentially means the evaluation is finished
-      if (priority == 0) {
-        // return value of current numeric element
-        return equation->pop()->getValue(0, 0);
-      // check if priority is of UnaryOperator
-      } else if (priority == 2) {
-        // throw if no element is after it
-        if (index + 1 == equation->length()) {
-          throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
-        }
-
-        // get next element
-        EquationElement* next = equation->get(index + 1);
-
-        // set element at current index to numeric value of evaluated unary operation
-        equation->set(index, new NumericValue(oper->getValue(nullptr, next)));
-
-        // remove the following element
-        equation->remove(index + 1);
-      // Remaining elements must be of BinaryOperator
-      } else {
-        // throw if the element has nothing before or after it
-        if (index == 0 || index + 1 == equation->length()) {
-          throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
-        }
-
-        // get operators before and after the current element
-        EquationElement* prev = equation->get(index - 1);
-        EquationElement* next = equation->get(index + 1);
-        // set element at current index to numeric value of evaluated binary operation
-        equation->set(index, new NumericValue(oper->getValue(prev, next)));
-        // remove previous and next elements
-        equation->remove(index + 1);
-        equation->remove(index - 1);
+    // check if priority is of NumericValue
+    // essentially means the evaluation is finished
+    if (priority == 0) {
+      // return value of current numeric element
+      return equation->pop()->getValue(0, 0);
+    // check if priority is of UnaryOperator
+    } else if (priority == 2) {
+      // throw if no element is after it
+      if (index + 1 == equation->length()) {
+        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
       }
-    } catch (std::runtime_error &e) {
-      // throw missing operand message
-      throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
+
+      // get next element
+      EquationElement* next = equation->get(index + 1);
+
+      // set element at current index to numeric value of evaluated unary operation
+      equation->set(index, new NumericValue(oper->getValue(nullptr, next)));
+
+      // remove the following element
+      equation->remove(index + 1);
+    // Remaining elements must be of BinaryOperator
+    } else {
+      // throw if the element has nothing before or after it
+      if (index == 0 || index + 1 == equation->length()) {
+        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
+      }
+
+      // get operators before and after the current element
+      EquationElement* prev = equation->get(index - 1);
+      EquationElement* next = equation->get(index + 1);
+      // set element at current index to numeric value of evaluated binary operation
+      equation->set(index, new NumericValue(oper->getValue(prev, next)));
+      // remove previous and next elements
+      equation->remove(index + 1);
+      equation->remove(index - 1);
     }
   }
 }
