@@ -74,29 +74,41 @@ double Evaluator::evaluate(List<EquationElement>* equation) {
       return equation->pop()->getValue(0, 0);
     // check if priority is of UnaryOperator
     } else if (priority == 2) {
-      // throw if no element is after it
-      if (index + 1 == equation->length()) {
-        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
+      // try to access next element
+      EquationElement* next;
+      try {
+        next = equation->get(index + 1);
+      // set to nullptr if inaccessible
+      } catch (std::out_of_range err) {
+        next = nullptr;
       }
-
-      // get next element
-      EquationElement* next = equation->get(index + 1);
 
       // set element at current index to numeric value of evaluated unary operation
       equation->set(index, new NumericValue(oper->getValue(nullptr, next)));
 
       // remove the following element
       equation->remove(index + 1);
+
     // Remaining elements must be of BinaryOperator
     } else {
-      // throw if the element has nothing before or after it
-      if (index == 0 || index + 1 == equation->length()) {
-        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
+      // try to access previous element
+      EquationElement* prev;
+      try {
+        prev = equation->get(index - 1);
+      // set to nullptr if inaccessible
+      } catch (std::out_of_range) {
+        prev = nullptr;
       }
 
-      // get operators before and after the current element
-      EquationElement* prev = equation->get(index - 1);
-      EquationElement* next = equation->get(index + 1);
+      // try to access next element
+      EquationElement* next;
+      try {
+        next = equation->get(index + 1);
+      // set to nullptr if inaccessible
+      } catch (std::out_of_range) {
+        next = nullptr;
+      }
+
       // set element at current index to numeric value of evaluated binary operation
       equation->set(index, new NumericValue(oper->getValue(prev, next)));
       // remove previous and next elements
