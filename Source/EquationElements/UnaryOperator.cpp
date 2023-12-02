@@ -17,14 +17,14 @@
  * @returns The result of the negation.
  * @throws std::runtime_error If given a nullptr.
 */
-float Negation::getValue(EquationElement* ignored, EquationElement* operand) 
+double Negation::getValue(EquationElement* ignored, EquationElement* operand) 
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
         throw std::runtime_error("missing operand!");
     }
 
-    float value = operand->getValue(nullptr, nullptr);
+    double value = operand->getValue(nullptr, nullptr);
     return -value;
 }
 
@@ -55,14 +55,14 @@ std::string Negation::getSymbol()
  * @returns The result of the Absolute Value operation.
  * @throws std::runtime_error If given a nullptr.
 */
-float AbsoluteValue::getValue(EquationElement* ignored, EquationElement* operand) 
+double AbsoluteValue::getValue(EquationElement* ignored, EquationElement* operand) 
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
         throw std::runtime_error("missing operand!");
     }
 
-    float value = operand->getValue(nullptr, nullptr);
+    double value = operand->getValue(nullptr, nullptr);
     //if the value is less than 0 (negative), then its absolute value is its negation
     //otherwise, the positive value is equal to the absolue value
     return (value < 0) ? -value : value;

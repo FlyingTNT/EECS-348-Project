@@ -15,7 +15,7 @@
 class EquationElement
 {
     public:
-    virtual float getValue(EquationElement* preceding, EquationElement* proceeding) = 0;//Passes by reference
+    virtual double getValue(EquationElement* preceding, EquationElement* proceeding) = 0;//Passes by reference
     virtual int getPriority() = 0;
     virtual std::string getSymbol();
     friend std::ostream& operator << (std::ostream& stream, EquationElement& element);

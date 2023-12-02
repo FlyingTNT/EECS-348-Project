@@ -32,7 +32,7 @@ Parentheses::~Parentheses()
  * @param proceeding The EquationElement proceeding this element in the equation. Ignored.
  * @returns The value of the equation contained in this parentheses.
 */
-float Parentheses::getValue(EquationElement* preceding, EquationElement* proceeding)
+double Parentheses::getValue(EquationElement* preceding, EquationElement* proceeding)
 {
     return Evaluator::evaluate(contents);//Uses the Evaluator class to calculate the value.
 }

@@ -23,7 +23,7 @@ class Parentheses : public EquationElement
     Parentheses(List<EquationElement>* contents);
     ~Parentheses();
 
-    float getValue(EquationElement* preceding, EquationElement* proceeding) override;
+    double getValue(EquationElement* preceding, EquationElement* proceeding) override;
     std::string getSymbol() override;
     int getPriority() override;
 };

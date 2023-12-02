@@ -11,6 +11,9 @@
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include <cmath>
+
+inline bool eq(double, double);
 
 /**
  * The system's main method.
@@ -52,11 +55,11 @@ int main()
                 Evaluates the equation and stores the result and then prints the result. This can't be done in one line
                 because if it was, we'd still print userIn = even if there was an error.
             */
-            float value = Evaluator::evaluate(equation);//Evaluates the equation
+            double value = Evaluator::evaluate(equation);//Evaluates the equation
             delete equation;//Remove equation from the heap (we don't need it anymore)
-            if(static_cast<int>(value) == value)//If the value is an int (so that we don't use decimal places after the int)
+            if(eq(std::round(value), value))//If the value is an int (so that we don't use decimal places after the int)
             {
-                std::cout << userIn << " = " << static_cast<int>(value) << "\n\n";//Prints the evaluated value
+                std::cout << userIn << " = " << static_cast<int>(std::round(value)) << "\n\n";//Prints the evaluated value
             }else{
                 std::cout << userIn << " = " << value << "\n\n";//Prints the evaluated value
             }
@@ -71,4 +74,9 @@ int main()
     }
 
     return 0;
+}
+
+inline bool eq(double a, double b)
+{
+    return a > b ? a - b < 0.0005 : b - a < 0.0005;
 }

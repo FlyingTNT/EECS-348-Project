@@ -1,6 +1,6 @@
 /**
  * NumericValue.hpp
- * Purpose: A class to represent a float value in an equation.
+ * Purpose: A class to represent a double value in an equation.
  * Author: C. Cooper
  * Date Created: 2023-11-28
 */
@@ -17,11 +17,11 @@
 class NumericValue : public EquationElement
 {
     private:
-    float value;
+    double value;
 
     public:
-    NumericValue(float);
-    float getValue(EquationElement*, EquationElement*) override;
+    NumericValue(double);
+    double getValue(EquationElement*, EquationElement*) override;
     int getPriority() override;
     std::string getSymbol() override;
 };

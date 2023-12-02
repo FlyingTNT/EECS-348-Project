@@ -16,7 +16,7 @@
 class Evaluator
 {
     public:
-    static float evaluate(List<EquationElement>*);
+    static double evaluate(List<EquationElement>*);
 };
 
 #endif

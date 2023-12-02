@@ -14,7 +14,7 @@
  * Creates a NumericValue representing the given float.
  * @param value The value of this EquationElement.
 */
-NumericValue::NumericValue(float value)
+NumericValue::NumericValue(double value)
 {
     this->value = value;
 }
@@ -25,7 +25,7 @@ NumericValue::NumericValue(float value)
  * @param proceeding Ignored. Only here for polymorphism.
  * @returns The value of this number.
 */
-float NumericValue::getValue(EquationElement* preceding, EquationElement* proceeding)
+double NumericValue::getValue(EquationElement* preceding, EquationElement* proceeding)
 {
     return value;
 }
@@ -42,7 +42,7 @@ int NumericValue::getPriority()
 
 /**
  * Returns a string representation of this element. 
- * This is just the float that it contains, to three places.
+ * This is just the double that it contains, to three places.
  * @returns A string representation of this element
 */
 std::string NumericValue::getSymbol() 
