@@ -23,8 +23,11 @@ static int getHighestPriorityIndex(List<EquationElement>* equation) {
   for (int i = 0; i < equation->length(); i++) {
     // retrieve priority of the current element
     int priority = equation->get(i)->getPriority();
-    // update maximum and index if the current priority is greater
-    if (priority > maximum) {
+    // check if maximum priority and priority are both of exponent
+    bool exponent = (maximum == 4) && (priority == 4);
+    // increment maximum and index if priority is greater or if they are both exponent
+    // because exponents are evaluated right-to-left
+    if (priority > maximum || exponent) {
       maximum = priority;
       index = i;
     }
