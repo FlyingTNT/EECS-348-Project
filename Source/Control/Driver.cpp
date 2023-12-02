@@ -13,7 +13,7 @@
 #include <iomanip>
 #include <cmath>
 
-inline bool eq(double, double);
+inline bool eq(double, double);//Compares 2 doubles
 
 /**
  * The system's main method.
@@ -45,7 +45,7 @@ int main()
         try//The parse and evaluate methods will throw any errors they encounter.
         {
             equation = Parser::parse(userIn);//Parse and store the user input.
-            std::cout << "Parsed " << userIn << " to " << *equation << "\n";//Print the parsed list (DEBUG ONLY, DELETE IN FINAL VERSION)
+            //std::cout << "Parsed " << userIn << " to " << *equation << "\n";//Print the parsed list (DEBUG ONLY, DELETE IN FINAL VERSION)
             if(equation->length() == 0)//If the user only gave spaces,
             {
                 continue;//Retry
@@ -76,6 +76,13 @@ int main()
     return 0;
 }
 
+/**
+ * Method to compare two doubles, to make sure they are the same to
+ * three decimal places of precision.
+ * @param a The first double to compare
+ * @param b The second double to compare
+ * @returns True if the abs difference between the two is less than 0.0005
+*/
 inline bool eq(double a, double b)
 {
     return a > b ? a - b < 0.0005 : b - a < 0.0005;
