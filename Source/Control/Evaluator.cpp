@@ -54,7 +54,7 @@ static int getHighestPriorityIndex(List<EquationElement>* equation) {
  * Finds the index of the next operation to perform
  * @param equation the list of elements representing the current equation
  * @returns the value of the given expression equation
- * @throws runtime error if an operator is missing an operand
+ * @throws any error from getValue calls or runtime error if missing operator
 */
 double Evaluator::evaluate(List<EquationElement>* equation) {
   while (equation->length() > 0) {
@@ -77,14 +77,13 @@ double Evaluator::evaluate(List<EquationElement>* equation) {
       return equation->pop()->getValue(0, 0);
     // check if priority is of UnaryOperator
     } else if (priority == 2) {
-      // try to access next element
-      EquationElement* next;
-      try {
-        next = equation->get(index + 1);
-      // set to nullptr if inaccessible
-      } catch (std::out_of_range err) {
-        next = nullptr;
+      // throw missing operator if index is at end of list
+      if (index == equation->length() - 1) {
+        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
       }
+
+      // get next element
+      EquationElement* next = equation->get(index + 1);
 
       // set element at current index to numeric value of evaluated unary operation
       equation->set(index, new NumericValue(oper->getValue(nullptr, next)));
@@ -94,23 +93,14 @@ double Evaluator::evaluate(List<EquationElement>* equation) {
 
     // Remaining elements must be of BinaryOperator
     } else {
-      // try to access previous element
-      EquationElement* prev;
-      try {
-        prev = equation->get(index - 1);
-      // set to nullptr if inaccessible
-      } catch (std::out_of_range) {
-        prev = nullptr;
+      // throw missing operator if index is at or end of list
+      if (index == 0 || index == equation->length() - 1) {
+        throw std::runtime_error(oper->getSymbol() + " is missing an operand!");
       }
 
-      // try to access next element
-      EquationElement* next;
-      try {
-        next = equation->get(index + 1);
-      // set to nullptr if inaccessible
-      } catch (std::out_of_range) {
-        next = nullptr;
-      }
+      // get previous and next elements
+      EquationElement* prev = equation->get(index - 1);
+      EquationElement* next = equation->get(index + 1);
 
       // set element at current index to numeric value of evaluated binary operation
       equation->set(index, new NumericValue(oper->getValue(prev, next)));
