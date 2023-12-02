@@ -21,7 +21,7 @@ double Negation::getValue(EquationElement* ignored, EquationElement* operand)
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double value = operand->getValue(nullptr, nullptr);
@@ -59,7 +59,7 @@ double AbsoluteValue::getValue(EquationElement* ignored, EquationElement* operan
 {
     if(operand == nullptr)//If it is given a nullptr,
     {
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double value = operand->getValue(nullptr, nullptr);

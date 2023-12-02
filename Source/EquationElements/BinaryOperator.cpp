@@ -32,7 +32,7 @@ double Addition::getValue(EquationElement* preceding, EquationElement* proceedin
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double firstOperand = preceding->getValue(nullptr, nullptr);
@@ -81,7 +81,7 @@ double Subtraction::getValue(EquationElement* preceding, EquationElement* procee
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double firstOperand = preceding->getValue(nullptr, nullptr);
@@ -131,7 +131,7 @@ double Multiplication::getValue(EquationElement* preceding, EquationElement* pro
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double firstOperand = preceding->getValue(nullptr, nullptr);
@@ -181,7 +181,7 @@ double Division::getValue(EquationElement* preceding, EquationElement* proceedin
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double firstOperand = preceding->getValue(nullptr, nullptr);
@@ -237,7 +237,7 @@ double Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     int firstOperand = static_cast<int>(preceding->getValue(nullptr, nullptr));
@@ -296,7 +296,7 @@ double Exponentiation::getValue(EquationElement* preceding, EquationElement* pro
             throw std::runtime_error("operator as operand!");
         }
         //If only one is nullptr,
-        throw std::runtime_error("missing operand!");
+        throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
     double base = preceding->getValue(nullptr, nullptr);
