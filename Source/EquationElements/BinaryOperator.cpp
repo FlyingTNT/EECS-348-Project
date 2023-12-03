@@ -240,8 +240,8 @@ double Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    int firstOperand = static_cast<int>(preceding->getValue(nullptr, nullptr));
-    int secondOperand = static_cast<int>(proceeding->getValue(nullptr, nullptr));
+    float firstOperand = preceding->getValue(nullptr, nullptr);
+    float secondOperand = proceeding->getValue(nullptr, nullptr);
     
     if (secondOperand == 0) 
     {
@@ -252,7 +252,7 @@ double Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error("%'s second operator must not be negative!");
     }
     
-    return firstOperand % secondOperand;
+    return std::fmod(firstOperand, secondOperand);
 }
 
 /**
