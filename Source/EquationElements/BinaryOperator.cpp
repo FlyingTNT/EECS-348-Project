@@ -8,6 +8,7 @@
 #include "BinaryOperator.hpp"
 #include <stdexcept>
 #include <cmath>
+#include <cstring>
 
 //Addition implementation
 
@@ -35,8 +36,22 @@ double Addition::getValue(EquationElement* preceding, EquationElement* proceedin
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    double firstOperand = preceding->getValue(nullptr, nullptr);
-    double secondOperand = proceeding->getValue(nullptr, nullptr);
+    double firstOperand;
+    double secondOperand;
+    try
+    {
+        firstOperand = preceding->getValue(nullptr, nullptr);
+        secondOperand = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
+
     return firstOperand + secondOperand;
 }
 
@@ -84,8 +99,21 @@ double Subtraction::getValue(EquationElement* preceding, EquationElement* procee
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    double firstOperand = preceding->getValue(nullptr, nullptr);
-    double secondOperand = proceeding->getValue(nullptr, nullptr);
+    double firstOperand;
+    double secondOperand;
+    try
+    {
+        firstOperand = preceding->getValue(nullptr, nullptr);
+        secondOperand = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
     
     return firstOperand - secondOperand;
 }
@@ -134,8 +162,21 @@ double Multiplication::getValue(EquationElement* preceding, EquationElement* pro
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    double firstOperand = preceding->getValue(nullptr, nullptr);
-    double secondOperand = proceeding->getValue(nullptr, nullptr);
+    double firstOperand;
+    double secondOperand;
+    try
+    {
+        firstOperand = preceding->getValue(nullptr, nullptr);
+        secondOperand = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
     
     return firstOperand * secondOperand;
 }
@@ -184,8 +225,21 @@ double Division::getValue(EquationElement* preceding, EquationElement* proceedin
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    double firstOperand = preceding->getValue(nullptr, nullptr);
-    double secondOperand = proceeding->getValue(nullptr, nullptr);
+    double firstOperand;
+    double secondOperand;
+    try
+    {
+        firstOperand = preceding->getValue(nullptr, nullptr);
+        secondOperand = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
     
     if (secondOperand == 0) 
     {
@@ -240,8 +294,21 @@ double Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    float firstOperand = preceding->getValue(nullptr, nullptr);
-    float secondOperand = proceeding->getValue(nullptr, nullptr);
+    double firstOperand;
+    double secondOperand;
+    try
+    {
+        firstOperand = preceding->getValue(nullptr, nullptr);
+        secondOperand = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
     
     if (secondOperand == 0) 
     {
@@ -299,8 +366,21 @@ double Exponentiation::getValue(EquationElement* preceding, EquationElement* pro
         throw std::runtime_error(getSymbol() + " is missing an operand!");
     }
 
-    double base = preceding->getValue(nullptr, nullptr);
-    double exponent = proceeding->getValue(nullptr, nullptr);
+    double base;
+    double exponent;
+    try
+    {
+        base = preceding->getValue(nullptr, nullptr);
+        exponent = proceeding->getValue(nullptr, nullptr);
+    }catch(std::runtime_error err)
+    {
+        if(std::strcmp(err.what(), "cannot use operator as operand!") == 0)//If the error is because one of the operands is actually an operator,
+        {
+            throw std::runtime_error(getSymbol() + " is missing an operand!");
+        }
+        //Otherwise,
+        throw err;//Just pass the error on.
+    }
     
     return pow(base, exponent);
 }
