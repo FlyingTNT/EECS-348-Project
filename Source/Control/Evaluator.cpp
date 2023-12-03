@@ -73,6 +73,10 @@ double Evaluator::evaluate(List<EquationElement>* equation) {
     // check if priority is of NumericValue
     // essentially means the evaluation is finished
     if (priority == 0) {
+      if(equation->length() > 1)//If there is more than one numeric value left,
+      {
+        throw std::runtime_error("missing operator!");
+      }
       // return value of current numeric element
       return equation->pop()->getValue(0, 0);
     // check if priority is of UnaryOperator
