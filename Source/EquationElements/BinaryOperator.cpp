@@ -29,7 +29,7 @@ double Addition::getValue(EquationElement* preceding, EquationElement* proceedin
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
@@ -78,7 +78,7 @@ double Subtraction::getValue(EquationElement* preceding, EquationElement* procee
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
@@ -128,7 +128,7 @@ double Multiplication::getValue(EquationElement* preceding, EquationElement* pro
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
@@ -178,7 +178,7 @@ double Division::getValue(EquationElement* preceding, EquationElement* proceedin
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
@@ -234,7 +234,7 @@ double Modulo::getValue(EquationElement* preceding, EquationElement* proceeding)
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
@@ -293,7 +293,7 @@ double Exponentiation::getValue(EquationElement* preceding, EquationElement* pro
         */
         if(preceding == nullptr && preceding == nullptr)//If they are both nullptr,
         {
-            throw std::runtime_error("operator as operand!");
+            throw std::runtime_error("cannot use operator as operand!");
         }
         //If only one is nullptr,
         throw std::runtime_error(getSymbol() + " is missing an operand!");
