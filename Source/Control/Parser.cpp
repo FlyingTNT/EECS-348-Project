@@ -146,6 +146,7 @@ List<EquationElement>* Parser::parse(std::string input)
                 break;
             case '(':
                 outListPtr->append(parseParentheses(input, &i));
+                lastWasOperator = false;
                 break;
             case ')'://If we have a closing parentheses without an openeing one
                 throw std::runtime_error("unmatched parentheses!");
