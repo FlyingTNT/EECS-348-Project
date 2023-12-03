@@ -153,7 +153,7 @@ List<EquationElement>* Parser::parse(std::string input)
             case ' ':
                 break;
             default://If it's not a character that we have a defined token for,
-                throw std::runtime_error("illegal character: " + std::string(1, c) + "!");
+                throw std::runtime_error("illegal symbol: " + std::string(1, c) + "!");
         }
     }
     return outListPtr;
